@@ -44,6 +44,20 @@ const changePost = (req, res) => {
 
 }
 
+const deletePost = (req, res) => {
+    const text = TextService.getTextById(req.params.id)
+
+    if(!text) res.status(404).json({message: "Texto não encontrado"})
+    else {
+        try {
+            TextService.deleteTextById(req.params.id)
+            res.status(200).json({message: "Texto deletado com sucesso!", deletedPost: text})
+        } catch(err) {
+            res.status(502).json({message: `Erro: ${err}`})
+        }
+    }
+}
+
 module.exports = {
-    createPost, listPosts, listPost, changePost
+    createPost, listPosts, listPost, changePost, deletePost
 }

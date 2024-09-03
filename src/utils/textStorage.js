@@ -33,6 +33,10 @@ class TextStorage {
 
         return text;
     }
+
+    deleteById(id) {
+        this.texts = this.texts.filter(text => text.id !== id)
+    }
 }
 
 module.exports = new TextStorage()

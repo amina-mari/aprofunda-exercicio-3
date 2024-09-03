@@ -17,5 +17,8 @@ module.exports = {
     },
     updateTextById: (id, changes) => {
         return TextStorage.updateById(id, changes)
+    },
+    deleteTextById: (id) => {
+        TextStorage.deleteById(id)
     }
 }
